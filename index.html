@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 60px;
+            height: calc(100% - 60px);
+            width: 200px;
+            background-color: violet;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            transition: width 0.3s;
+            overflow-x: hidden;
+        }
+        .sidebar.collapsed {
+            width: 60px;
+        }
+        .sidebar h2, .category-list {
+            transition: opacity 0.3s;
+        }
+        .sidebar.collapsed h2, .sidebar.collapsed .category-list {
+            opacity: 0;
+        }
+        .category-list {
+            list-style-type: lower-alpha;
+            padding: 0;
+        }
+        .category-list li {
+            margin-bottom: 10px;
+        }
+        .category-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .category-link:hover {
+            text-decoration: underline;
+        }
+        .collapse-button {
+            position: fixed;
+            left: 200px;
+            top: 70px;
+            z-index: 1001;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: left 0.3s;
+        }
+        .sidebar.collapsed + .collapse-button {
+            left: 60px;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            padding-top: 80px;
+            transition: margin-left 0.3s;
+        }
+        .sidebar.collapsed ~ .content {
+            margin-left: 80px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            background-size: cover;
+            background-position: center right;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+        .welcome-notes {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 200px;
+            border-radius: 100px;
+        }
+        #sidebar-toggle {
+            display: none;
+        }
+        #sidebar-toggle:checked ~ .sidebar {
+            width: 60px;
+        }
+        #sidebar-toggle:checked ~ .sidebar h2,
+        #sidebar-toggle:checked ~ .sidebar .category-list {
+            opacity: 0;
+        }
+        #sidebar-toggle:checked ~ .collapse-button {
+            left: 60px;
+        }
+        #sidebar-toggle:checked ~ .content {
+            margin-left: 80px;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+            }
+            .sidebar.collapsed {
+                width: 100%;
+            }
+            .collapse-button {
+                left: auto;
+                right: 0;
+                top: 10px;
+            }
+            .sidebar.collapsed + .collapse-button {
+                left: auto;
+                right: 0;
+            }
+            .content {
+                margin-left: 0;
+                padding-top: 60px;
+            }
+            .sidebar.collapsed ~ .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="sidebar-toggle">
+    <div class="header">
+        <h1>Welcome to proconnect</h1>
+    </div>
+    
+    <div class="sidebar">
+        <h2>Purchase</h2>
+        <ul class="category-list">
+            <li><a href="Tax.html" class="category-link">TAX RETURNS</a></li>
+            <li><a href="clients.html" class="category-link">CLIENTS</a></li>
+            <li><a href="Efile.html" class="category-link">EFILE</a></li>
+            <li><a href="inputlink.html" class="category-link">INPUT LINK</a></li>
+            <li><a href="reporting.html" class="category-link">REPORTING</a></li>
+        </ul>
+    </div>
+    <label for="sidebar-toggle" class="collapse-button">☰</label>
+
+    <div class="content">
+        <div class="welcome-notes">
+            <h1>CONVERT CLIENT DATA FROM PREVIOUS SOFTWARE</h1>
+            <p>Try your first data conversion with in proconnect for<b>as little as 1 client</b></p>
+        </div>
+    </div>
+</body>
+</html>
